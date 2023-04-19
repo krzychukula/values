@@ -32,7 +32,7 @@ dl {
     box-shadow: 1px 1px 1px silver;
     transition: scale 0.2s;
     flex: 1;
-    min-width: fit-content;
+    min-width: 20rem;
 }
 
 .value-definiton:hover {
@@ -51,6 +51,7 @@ dt {
 
 dd {
     color: grey;
+    margin-inline-start: 0;
 }
 
 .ordering {
@@ -62,6 +63,7 @@ dd {
 
 .pick {
     padding: 2rem;
+    margin: 1rem 0;
     font-size: 2rem;
     cursor: pointer;
 }
@@ -78,13 +80,10 @@ dd {
     padding: 1rem 0;
 }
 
-.comparator:empty {
-    box-shadow: inset 1px 1px 10px grey;
-}
-
 .comparator__options .value-definiton {
     flex: 1;
     font-size: large;
+    min-width: 50%;
 }
 
 .progress {
@@ -95,6 +94,7 @@ dd {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    text-align: left;
 }
 
 footer {

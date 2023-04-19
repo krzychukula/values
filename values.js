@@ -57,16 +57,22 @@ const renderEstimatedComparisons = () => {
   ESTIMATE.innerText = text;
 };
 
-const renderSorted = (elements) => {
+const renderSorted = (elements, text = "") => {
   RESULTS.innerHTML = "";
 
   const list = document.createElement("ol");
   elements.forEach((el) => {
     const li = document.createElement("li");
-    li.appendChild(el.cloneNode(true));
+    const value = el.cloneNode(true);
+    value.className = "";
+    li.appendChild(value);
     list.appendChild(li);
   });
 
+  const info = document.createElement("h2");
+  info.innerText = text;
+
+  RESULTS.append(info);
   RESULTS.append(list);
 };
 
@@ -106,8 +112,9 @@ async function compareValues(aOrig, bOrig) {
       cleanUp();
     });
 
-    const instructions = document.createTextNode("Pick more imortant one:");
-    const options = document.createElement("h1");
+    const instructions = document.createElement("h2");
+    instructions.innerText = "Pick the more imortant one:";
+    const options = document.createElement("div");
     options.classList.add("comparator__options");
 
     options.appendChild(a);
@@ -135,10 +142,16 @@ const sort = () => {
   const sorted = oddEvenSort(list, async (a, b) => {
     progress++;
     PROGRESS.value = progress;
+    setTimeout(() => {
+      // This should give me live preview
+      renderSorted(list, "Pending order of your values:");
+    }, 0);
     return compareValues(a, b);
   });
   PROGRESS.value = 0;
-  return sorted.then(renderSorted);
+  return sorted.then((result) => {
+    renderSorted(result, "Final list of your values:");
+  });
 };
 
 PICK.addEventListener(

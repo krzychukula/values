@@ -8,6 +8,7 @@ export async function oddEvenSort(arr, asyncCompare) {
     for (let i = 0; i < n - 1; i += 2) {
       const shouldSwap = await asyncCompare(arr[i], arr[i + 1]);
       if (shouldSwap > 0) {
+        console.info("shouldSwap");
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
         sorted = false;
       }
@@ -17,6 +18,7 @@ export async function oddEvenSort(arr, asyncCompare) {
     for (let i = 1; i < n - 1; i += 2) {
       const shouldSwap = await asyncCompare(arr[i], arr[i + 1]);
       if (shouldSwap > 0) {
+        console.info("shouldSwap");
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
         sorted = false;
       }
