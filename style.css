@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 section {
     margin: 2rem auto;
     max-width: max-content;
@@ -26,6 +31,8 @@ dl {
     cursor: pointer;
     box-shadow: 1px 1px 1px silver;
     transition: scale 0.2s;
+    flex: 1;
+    min-width: fit-content;
 }
 
 .value-definiton:hover {

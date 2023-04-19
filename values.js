@@ -18,7 +18,7 @@ SELECT_ALL.addEventListener(
       });
     } else {
       VALUES.querySelectorAll(".value-definiton").forEach((el) => {
-        el.classList.delete("selected");
+        el.classList.remove("selected");
       });
     }
     renderEstimatedComparisons();
@@ -75,9 +75,10 @@ HIDE_UNSELECED.addEventListener(
   (e) => {
     const selected = getSelected();
     if (selected.length) {
-      const selected = VALUES.classList.toggle("hide-selected");
+      VALUES.classList.toggle("hide-selected");
     } else {
       e.target.checked = false;
+      VALUES.classList.remove("hide-selected");
     }
   },
   false
